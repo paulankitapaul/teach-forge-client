@@ -56,7 +56,7 @@ const Login = () => {
     }
 
     return (
-        <div className='max-w-screen-2xl mx-auto my-7'>
+        <div className='max-w-screen-2xl mx-auto flex justify-center items-center my-16'>
             <Helmet>
                 <title>Login</title>
             </Helmet>
@@ -73,9 +73,6 @@ const Login = () => {
                             <span className="label-text">Password</span>
                         </label>
                         <input type="password" name='password' placeholder="password" className="input input-bordered" autoComplete='off' required />
-                        <label className="label">
-                            <a className="label-text-alt btn link link-hover">Forgot password?</a>
-                        </label>
                     </div>
                     <div className="form-control mt-6">
                         <button className="btn btn-primary">Login</button>

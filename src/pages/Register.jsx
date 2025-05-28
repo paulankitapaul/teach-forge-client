@@ -4,11 +4,13 @@ import { FcGoogle } from "react-icons/fc";
 import Swal from 'sweetalert2';
 import { Helmet } from 'react-helmet-async';
 import { AuthContext } from '../provider/AuthProvider';
+import useAxiosPublic from '../hooks/useAxiosPublic';
 
 const Register = () => {
     const { createUser, setUser, handleWithGoogle, updateUserProfile } = useContext(AuthContext);
     const [error, setError] = useState('');
     const navigate = useNavigate();
+    const axiosPublic = useAxiosPublic();
     const handleRegister = event => {
         event.preventDefault();
 
@@ -38,13 +40,35 @@ const Register = () => {
                 setUser(user);
                 updateUserProfile({ displayName: name, photoURL: photo })
                     .then(() => {
-                        Swal.fire({
-                            title: 'Success!',
-                            text: 'Successfully Register',
-                            icon: 'success',
-                            confirmButtonText: 'Ok'
-                        });
-                        navigate('/');
+                        const userInfo = {
+                            name: name,
+                            email: email,
+                            role: 'student'
+                        };
+
+                        axiosPublic.post('/users', userInfo)
+                            .then(res => {
+                                if (res.data.insertedId) {
+                                    Swal.fire({
+                                        title: "SignUp Success!",
+                                        showClass: {
+                                            popup: `
+                                            animate__animated
+                                            animate__fadeInUp
+                                            animate__faster
+                                          `
+                                        },
+                                        hideClass: {
+                                            popup: `
+                                            animate__animated
+                                            animate__fadeOutDown
+                                            animate__faster
+                                          `
+                                        }
+                                    });
+                                    navigate('/');
+                                }
+                            })
                     })
                     .catch((err) => {
                         setError(err.message)
@@ -75,7 +99,7 @@ const Register = () => {
     }
 
     return (
-        <div className='max-w-screen-2xl mx-auto flex justify-center items-center'>
+        <div className='max-w-screen-2xl mx-auto flex justify-center items-center my-16'>
             <Helmet>
                 <title>Register</title>
             </Helmet>
