@@ -4,6 +4,8 @@ import Login from "../pages/Login";
 import Register from "../pages/Register";
 import Dashboard from "../MainLayout/Dashboard";
 import AllUsers from "../dashboard/admin/AllUsers";
+import PrivateRoute from "./PrivateRoute";
+import ErrorPage from "../components/ErrorPage";
 
 
 const router = createBrowserRouter([
@@ -17,31 +19,31 @@ const router = createBrowserRouter([
 
             // },
             {
-                path:'/login',
+                path: '/login',
                 element: <Login></Login>
             },
             {
-                path:'/register',
+                path: '/register',
                 element: <Register></Register>
             }
         ]
     },
-    
+
     // dashboard
     {
         path: '/dashboard',
-        element: <Dashboard></Dashboard>,
-        children:[
+        element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+        children: [
             {
-                path:'users',
+                path: 'users',
                 element: <AllUsers></AllUsers>
             }
         ]
+    },
+    {
+        path:'/*',
+        element: <ErrorPage></ErrorPage>
     }
-    // {
-    //     path:'/*',
-    //     element: <ErrorPage></ErrorPage>
-    // }
 ]);
 
 export default router
