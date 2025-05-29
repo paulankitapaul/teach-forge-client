@@ -46,7 +46,7 @@ const NavBar = () => {
                             className='menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 space-y-2'
                         >
                             <li>
-                                <NavLink to='/'>Dashboard</NavLink>
+                                <NavLink to='/dashboard'>Dashboard</NavLink>
                             </li>
                             <li className='mt-2'>
                                 <button

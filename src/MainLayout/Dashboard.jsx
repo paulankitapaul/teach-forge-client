@@ -1,0 +1,26 @@
+import { Outlet } from "react-router-dom";
+import { Link } from "react-router-dom";
+
+const Dashboard = () => {
+    return (
+        <div className="flex min-h-screen">
+            {/* Sidebar */}
+            <div className="w-64 bg-gray-800 text-white p-5">
+                <h2 className="text-xl font-bold mb-6">Dashboard</h2>
+                <ul className="space-y-3">
+                    <li><Link to="/dashboard/profile" className="hover:underline">Profile</Link></li>
+                    <li><Link to="/dashboard/users" className="hover:underline">All Users</Link></li>
+                    <li><Link to="/dashboard/my-classes" className="hover:underline">My Classes</Link></li>
+                    <li><Link to="/" className="hover:underline">Back to Home</Link></li>
+                </ul>
+            </div>
+
+            {/* Page Content */}
+            <div className="flex-1 p-6 bg-gray-100">
+                <Outlet />
+            </div>
+        </div>
+    );
+};
+
+export default Dashboard;

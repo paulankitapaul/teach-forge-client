@@ -4,9 +4,11 @@ import { FcGoogle } from "react-icons/fc";
 import Swal from 'sweetalert2';
 import { AuthContext } from '../provider/AuthProvider';
 import { Helmet } from 'react-helmet-async';
+import useAxiosPublic from '../hooks/useAxiosPublic';
 
 const Login = () => {
     const { userLogin, setUser, handleWithGoogle } = useContext(AuthContext);
+    const axiosPublic = useAxiosPublic();
     const [error, setError] = useState('');
     const navigate = useNavigate();
 
@@ -42,13 +44,16 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 setUser(user);
-                Swal.fire({
-                    title: 'Success!',
-                    text: 'Successfully Login',
-                    icon: 'success',
-                    confirmButtonText: 'Ok'
-                });
-                navigate('/');
+                const userInfo = {
+                    name: result.user?.displayName,
+                    email: result.user?.email,
+                    role: 'student'
+                };
+
+                axiosPublic.post('/users', userInfo)
+                    .then(res => {
+                        navigate('/')
+                    })
             })
             .catch(err => {
                 setError(err.message)

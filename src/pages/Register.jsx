@@ -85,13 +85,16 @@ const Register = () => {
             .then(result => {
                 const user = result.user;
                 setUser(user);
-                Swal.fire({
-                    title: 'Success!',
-                    text: 'Successfully Register',
-                    icon: 'success',
-                    confirmButtonText: 'Ok'
-                });
-                navigate('/');
+                const userInfo = {
+                    name: result.user?.displayName,
+                    email: result.user?.email,
+                    role: 'student'
+                };
+
+                axiosPublic.post('/users', userInfo)
+                    .then(res => {
+                        navigate('/')
+                    })
             })
             .catch(err => {
                 setError(err.message)
