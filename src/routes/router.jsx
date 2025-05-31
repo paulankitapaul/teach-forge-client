@@ -14,6 +14,7 @@ import MyClasses from "../dashboard/teacher/MyClasses";
 import AllClassesAdmin from "../dashboard/admin/AllClassesAdmin";
 import AllClasses from "../pages/AllClasses";
 import MyEnrollClass from "../dashboard/student/MyEnrollClass";
+import Home from "../pages/home/home";
 
 
 const router = createBrowserRouter([
@@ -21,11 +22,11 @@ const router = createBrowserRouter([
         path: "/",
         element: <MainLayout></MainLayout>,
         children: [
-            // {
-            //     path: '/',
-            //     element: <Home></Home>
+            {
+                path: '/',
+                element: <Home></Home>
 
-            // },
+            },
             {
                 path: '/classes',
                 element: <AllClasses></AllClasses>
