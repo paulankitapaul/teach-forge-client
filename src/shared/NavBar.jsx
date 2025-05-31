@@ -20,7 +20,7 @@ const NavBar = () => {
                         <NavLink to='/'>All Classes</NavLink>
                     </li>
                     <li>
-                        <NavLink to='/'>Teach on <span className='text-red-500 font-semibold'>Teach Forge</span></NavLink>
+                        <NavLink to='/teach-on'>Teach on <span className='text-red-500 font-semibold'>Teach Forge</span></NavLink>
                     </li>
 
                     {!user && (

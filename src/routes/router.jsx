@@ -6,6 +6,8 @@ import Dashboard from "../MainLayout/Dashboard";
 import AllUsers from "../dashboard/admin/AllUsers";
 import PrivateRoute from "./PrivateRoute";
 import ErrorPage from "../components/ErrorPage";
+import ApplyTeacher from "../pages/ApplyTeacher";
+import TeacherRequests from "../dashboard/admin/TeacherRequests";
 
 
 const router = createBrowserRouter([
@@ -18,6 +20,11 @@ const router = createBrowserRouter([
             //     element: <Home></Home>
 
             // },
+            {
+                path: '/teach-on',
+                element: <PrivateRoute><ApplyTeacher></ApplyTeacher></PrivateRoute>
+
+            },
             {
                 path: '/login',
                 element: <Login></Login>
@@ -35,9 +42,13 @@ const router = createBrowserRouter([
         element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
         children: [
             {
+                path: 'teacher-requests',
+                element: <TeacherRequests></TeacherRequests>
+            },
+            {
                 path: 'users',
                 element: <AllUsers></AllUsers>
-            }
+            },
         ]
     },
     {
