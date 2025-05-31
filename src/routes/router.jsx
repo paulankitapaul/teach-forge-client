@@ -10,6 +10,10 @@ import ApplyTeacher from "../pages/ApplyTeacher";
 import TeacherRequests from "../dashboard/admin/TeacherRequests";
 import MyProfile from "../dashboard/shared/MyProfile";
 import AddClass from "../dashboard/teacher/AddClass";
+import MyClasses from "../dashboard/teacher/MyClasses";
+import AllClassesAdmin from "../dashboard/admin/AllClassesAdmin";
+import AllClasses from "../pages/AllClasses";
+import MyEnrollClass from "../dashboard/student/MyEnrollClass";
 
 
 const router = createBrowserRouter([
@@ -22,6 +26,11 @@ const router = createBrowserRouter([
             //     element: <Home></Home>
 
             // },
+            {
+                path: '/classes',
+                element: <AllClasses></AllClasses>
+
+            },
             {
                 path: '/teach-on',
                 element: <PrivateRoute><ApplyTeacher></ApplyTeacher></PrivateRoute>
@@ -49,6 +58,10 @@ const router = createBrowserRouter([
                 element: <TeacherRequests></TeacherRequests>
             },
             {
+                path: 'all-classes',
+                element: <AllClassesAdmin></AllClassesAdmin>
+            },
+            {
                 path: 'users',
                 element: <AllUsers></AllUsers>
             },
@@ -58,12 +71,18 @@ const router = createBrowserRouter([
                 path: 'add-class',
                 element: <AddClass></AddClass>
             },
+            {
+                path: 'my-classes',
+                element: <MyClasses></MyClasses>
+            },
             
+            // for student only
+            {
+                path: 'enrollments',
+                element: <MyEnrollClass></MyEnrollClass>
+            },
 
-
-
-
-            // for all users
+            // for all roles
             {
                 path: 'profile',
                 element: <MyProfile></MyProfile>
