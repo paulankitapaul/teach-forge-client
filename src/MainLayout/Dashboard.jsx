@@ -15,7 +15,7 @@ const Dashboard = () => {
                 <h2 className="text-xl font-bold mb-6">Dashboard</h2>
                 <ul className="space-y-3">
 
-                    {/* 🛠 Admin Links */}
+                    {/* Admin Links */}
                     {isAdmin && (
                         <>
                             <li><Link to="/dashboard/teacher-requests" className="hover:underline">Teacher Requests</Link></li>
@@ -25,7 +25,7 @@ const Dashboard = () => {
                         </>
                     )}
 
-                    {/* 🎓 Teacher Links */}
+                    {/* Teacher Links */}
                     {isTeacher && !isAdmin && (
                         <>
                             <li><Link to="/dashboard/add-class" className="hover:underline">Add Class</Link></li>
@@ -34,7 +34,7 @@ const Dashboard = () => {
                         </>
                     )}
 
-                    {/* 👤 Student/User Links */}
+                    {/* Student/User Links */}
                     {!isAdmin && !isTeacher && (
                         <>
                             <li><Link to="/dashboard/enrollments" className="hover:underline">My Enrollments</Link></li>
@@ -42,7 +42,7 @@ const Dashboard = () => {
                         </>
                     )}
 
-                    {/* 🔙 Always visible */}
+                    
                     <li><Link to="/" className="hover:underline">Back to Home</Link></li>
                 </ul>
             </div>

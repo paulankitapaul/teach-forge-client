@@ -9,6 +9,7 @@ import ErrorPage from "../components/ErrorPage";
 import ApplyTeacher from "../pages/ApplyTeacher";
 import TeacherRequests from "../dashboard/admin/TeacherRequests";
 import MyProfile from "../dashboard/shared/MyProfile";
+import AddClass from "../dashboard/teacher/AddClass";
 
 
 const router = createBrowserRouter([
@@ -51,9 +52,13 @@ const router = createBrowserRouter([
                 path: 'users',
                 element: <AllUsers></AllUsers>
             },
-
+            
             // for teacher only
-
+            {
+                path: 'add-class',
+                element: <AddClass></AddClass>
+            },
+            
 
 
 
