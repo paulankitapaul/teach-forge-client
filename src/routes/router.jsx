@@ -8,6 +8,7 @@ import PrivateRoute from "./PrivateRoute";
 import ErrorPage from "../components/ErrorPage";
 import ApplyTeacher from "../pages/ApplyTeacher";
 import TeacherRequests from "../dashboard/admin/TeacherRequests";
+import MyProfile from "../dashboard/shared/MyProfile";
 
 
 const router = createBrowserRouter([
@@ -41,6 +42,7 @@ const router = createBrowserRouter([
         path: '/dashboard',
         element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
         children: [
+            //  for admin only
             {
                 path: 'teacher-requests',
                 element: <TeacherRequests></TeacherRequests>
@@ -49,10 +51,22 @@ const router = createBrowserRouter([
                 path: 'users',
                 element: <AllUsers></AllUsers>
             },
+
+            // for teacher only
+
+
+
+
+
+            // for all users
+            {
+                path: 'profile',
+                element: <MyProfile></MyProfile>
+            },
         ]
     },
     {
-        path:'/*',
+        path: '/*',
         element: <ErrorPage></ErrorPage>
     }
 ]);
